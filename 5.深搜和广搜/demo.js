@@ -32,6 +32,7 @@ console.log(largeSearch([a], 'n'));
 function largeSearch(rootList, target) {
     if(rootList === null || rootList.length === 0) return false;
     var childList = [];
+
     for(var i = 0; i < rootList.length; i ++) {
         if(rootList[i] !== null && rootList[i].value === target) {
             return true;
