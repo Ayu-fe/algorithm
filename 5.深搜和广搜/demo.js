@@ -17,7 +17,7 @@ c.right = g;
 b.left = d;
 b.right = e;
 //二叉树的深度优先搜索 和前序遍历的顺序是一样的
-function deepSearch(root, target) {
+function deepSearch (root, target) {
     if(root == null) return false;
     if(root.value === target) return true;
     var left = deepSearch(root.left, target);
@@ -25,8 +25,20 @@ function deepSearch(root, target) {
     return left || right;
 }
 // console.log(deepSearch(a, 'c'));
-//二叉树的广度优先搜索
-function largeSearch (root, target) {
-    if(root == null) return false;
 
+
+//二叉树的广度优先搜索 广度优先搜索是一层一层的搜索 所以我们应该传一个root的集合
+console.log(largeSearch([a], 'n'));
+function largeSearch(rootList, target) {
+    if(rootList === null || rootList.length === 0) return false;
+    var childList = [];
+    for(var i = 0; i < rootList.length; i ++) {
+        if(rootList[i] !== null && rootList[i].value === target) {
+            return true;
+        } else if(rootList[i] !== null) {
+            childList.push(rootList[i].left);
+            childList.push(rootList[i].right);
+        } else return false;
+    }
+    return largeSearch(childList, target);
 }
